@@ -19,9 +19,3 @@ How to add ESP to Arduino IDE
 https://circuits4you.com/2018/06/21/add-nodemcu-esp8266-to-arduino-ide/
 https://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-Download Firebase arduino library
-
-https://www.electroniclinic.com/wp-content/uploads/2019/08/FirebaseArduino.zip
-
-Download ArduinoJson library
-https://github.com/bblanchon/ArduinoJson
