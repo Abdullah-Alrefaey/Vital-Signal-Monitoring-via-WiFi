@@ -22,30 +22,30 @@ int sdata = 0; // The variable resistor value will be stored in sdata.
 
 void setup()
 {
-  // Debug console
-  Serial.begin(9600);
-  pinMode(vr , INPUT);
-  pinMode(D0, OUTPUT);
+    // Debug console
+    Serial.begin(9600);
+    pinMode(vr , INPUT);
+    pinMode(D0, OUTPUT);
   
-  // connect to wifi.
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.print("connecting");
+    // connect to wifi.
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    Serial.print("connecting");
   
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    Serial.print(".");
-    delay(500);
-  }
-  Serial.println();
-  Serial.print("connected: ");
-  Serial.println(WiFi.localIP());
-  
-  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
-  // Firebase.push("Variable/Value", "fahad");
-  
-  
-  //4. Enable auto reconnect the WiFi when connection lost
-  Firebase.reconnectWiFi(true);
+    while (WiFi.status() != WL_CONNECTED)
+    {
+      Serial.print(".");
+      delay(500);
+    }
+    Serial.println();
+    Serial.print("connected: ");
+    Serial.println(WiFi.localIP());
+    
+    Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+    // Firebase.push("Variable/Value", "fahad");
+    
+    
+    //4. Enable auto reconnect the WiFi when connection lost
+    Firebase.reconnectWiFi(true);
 }
 
 

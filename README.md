@@ -19,3 +19,4 @@ How to add ESP to Arduino IDE
 https://circuits4you.com/2018/06/21/add-nodemcu-esp8266-to-arduino-ide/
 https://arduino.esp8266.com/stable/package_esp8266com_index.json
 
+small edit
