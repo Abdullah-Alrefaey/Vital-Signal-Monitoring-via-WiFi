@@ -1,0 +1,34 @@
+<head>
+  <title>Fuckin' Awesome Plot</title>
+    <script type="text/javascript" src="/js/plotly-latest.min.js"></script>
+</head>
+
+<body style="text-align: center">
+  <h1>Fuckin' Awesome Plot</h1>
+  <div id="graph"></div>
+{{>hello}}
+</body>
+
+<template name="hello">
+    <script>
+        function rand() {
+            return Math.random();
+        }
+
+        let time = new Date();
+
+        let data = [{
+            x: [time],
+            y: [0],
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }]
+
+        Plotly.plot('graph', data);
+
+
+
+    </script>
+    <button style="margin-left: auto; margin-right: auto" class="btn btn-success"> Update</button>
+</template>
+
