@@ -47,6 +47,7 @@ void setup()
 void loop()
 
 {
+    // Read Data from the sensor
     sdata = analogRead(vr);
     Serial.println(sdata);
     
