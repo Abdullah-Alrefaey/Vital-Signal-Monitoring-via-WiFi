@@ -1,25 +1,31 @@
 import { Template } from 'meteor/templating';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './main.html';
+
 // Load Library
-const firebase = require('firebase-admin');
+const firebase = require("firebase/app");
 
-// get service key file
-const servicekey = require('../esp-1st-project-firebase-adminsdk-atckp-7d0a35b5d7.json');
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
+require("firebase/database");
 
-// Init App
+let firebaseConfig = {
+    apiKey: "AIzaSyA4BPzcuUubdN_1nF1BXE7xfHfv9Ie5en8",
+    authDomain: "esp-1st-project.firebaseapp.com",
+    databaseURL: "https://esp-1st-project.firebaseio.com",
+    projectId: "esp-1st-project",
+    storageBucket: "esp-1st-project.appspot.com",
+    messagingSenderId: "510468231747",
+    appId: "1:510468231747:web:5aca299e55925b3d1ffaf6",
+    measurementId: "G-TZZH9RVXMH"
+};
 
-function rand(){
-  return Math.random();
-}
 Template.body.events({
   'click button'(event, instance) {
-    firebase.initializeApp({
-      credential: firebase.credential.cert(servicekey),
-      databaseURL: 'https://esp-1st-project.firebaseio.com'
-    });
-  
-  
+      firebase.initializeApp(firebaseConfig);
+
+  // Connect to database
   let datapoint = firebase.database().ref();
   let data = datapoint.child("Reading");
   data.on("value", (snap)=>{

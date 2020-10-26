@@ -7,8 +7,8 @@
 // Configure Firebase Variables
 #define FIREBASE_HOST "esp-1st-project.firebaseio.com"
 #define FIREBASE_AUTH "LJTM2sDQv2ehHguRXcXtwtPBMdGCDJTJ50FTBMVz"
-#define WIFI_SSID "Cold"
-#define WIFI_PASSWORD "salah199998"
+#define WIFI_SSID "Refaey"
+#define WIFI_PASSWORD "Body@12345"
 
 // Declare the Firebase Data object in the global scope
 FirebaseData firebaseData;

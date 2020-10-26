@@ -1,20 +1,16 @@
 <head>
-  <title>Fuckin' Awesome Plot</title>
+  <title>Vital Signal Monitoring</title>
     <script type="text/javascript" src="/js/plotly-latest.min.js"></script>
 </head>
 
 <body style="text-align: center">
-  <h1>Fuckin' Awesome Plot</h1>
+  <h1>Vital Signal Monitoring</h1>
   <div id="graph"></div>
 {{>hello}}
 </body>
 
 <template name="hello">
     <script>
-        function rand() {
-            return Math.random();
-        }
-
         let time = new Date();
 
         let data = [{
@@ -25,9 +21,6 @@
         }]
 
         Plotly.plot('graph', data);
-
-
-
     </script>
     <button style="margin-left: auto; margin-right: auto" class="btn btn-success"> Update</button>
 </template>
