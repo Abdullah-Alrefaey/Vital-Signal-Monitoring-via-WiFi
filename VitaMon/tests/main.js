@@ -1,9 +1,9 @@
 import assert from "assert";
 
-describe("task1-sbe403a_f20_task1_03", function () {
+describe("Plotting", function () {
   it("package.json has correct name", async function () {
     const { name } = await import("../package.json");
-    assert.strictEqual(name, "task1-sbe403a_f20_task1_03");
+    assert.strictEqual(name, "Plotting");
   });
 
   if (Meteor.isClient) {
