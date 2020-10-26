@@ -14,14 +14,19 @@
 FirebaseData firebaseData;
 
 String myString;
-int vr = A0;         // variable resistor connected
+int ThermistorPin = A0;         // Thermistor connected
 int sdata = 0;       // The variable resistor value will be stored in sdata.
+
+int V_out;
+float R1 = 10000;
+float logR2, R2, T;
+float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
 
 void setup()
 {
     // Debug console
     Serial.begin(115200);
-    pinMode(vr , INPUT);
+    pinMode(ThermistorPin , INPUT);
     pinMode(D0, OUTPUT);
   
     // connect to wifi.
@@ -48,10 +53,18 @@ void loop()
 
 {
     // Read Data from the sensor
-    sdata = analogRead(vr);
-    Serial.println(sdata);
+    sdata = analogRead(ThermistorPin);
+
+    // Convert Analoag Reading to Temperature
+    V_out = analogRead(ThermistorPin);
+    R2 = R1 * (1023.0 / (float)V_out - 1.0);
+    logR2 = log(R2);
+    T = (1.0 / (c1 + c2*logR2 + c3*logR2*logR2*logR2));
+    T = T - 273.15;
     
-    if (Firebase.setFloat(firebaseData, "/Reading", sdata)) {
+    Serial.println(T);
+    
+    if (Firebase.setFloat(firebaseData, "/Reading", T)) {
         // Success
         Serial.println("Set int data success");
     } else {
