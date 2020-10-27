@@ -4,24 +4,27 @@
 </head>
 
 <body style="text-align: center">
-  <h1>Vital Signal Monitoring</h1>
-  <div id="graph"></div>
-{{>hello}}
+  <h1>Vital Signal Monitor</h1>
+  <div id="graph" style="width: 100%;height: 100%"></div>
+{{>Plotly}}
 </body>
 
-<template name="hello">
+<template name="Plotly">
     <script>
         let time = new Date();
 
         let data = [{
             x: [time],
             y: [0],
-            mode: 'lines',
+            mode: 'scatter',
             line: {color: '#80CAF6'}
         }]
-
-        Plotly.plot('graph', data);
+        let layout = {
+        };
+        // plot_bgcolor:"black",
+        let config = {responsive: true}
+        Plotly.plot('graph', data, layout,config );
     </script>
-    <button style="margin-left: auto; margin-right: auto" class="btn btn-success"> Update</button>
+    <button style="margin-left: auto; margin-right: auto; margin-top:10px;" class="btn btn-success" {{isDisabled}}>Connect</button>
 </template>
 

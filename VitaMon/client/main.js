@@ -9,7 +9,7 @@ const firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/firestore");
 require("firebase/database");
-
+let Disabled;
 let firebaseConfig = {
     apiKey: "AIzaSyA4BPzcuUubdN_1nF1BXE7xfHfv9Ie5en8",
     authDomain: "esp-1st-project.firebaseapp.com",
@@ -30,11 +30,11 @@ Template.body.events({
   let data = datapoint.child("Reading");
   data.on("value", (snap)=>{
       let time = new Date();
-
+      Disabled = "disabled";
       let update = {
         x:  [[time]],
         y: [[snap.val()]]
-      }
+      };
 
       let olderTime = time.setMinutes(time.getMinutes() - 1);
       let futureTime = time.setMinutes(time.getMinutes() + 1);
@@ -47,7 +47,11 @@ Template.body.events({
       };
 
       Plotly.relayout('graph', minuteView);
-      Plotly.extendTraces('graph', update, [0])
+      Plotly.extendTraces('graph', update, [0]);
   });
   },
 });
+Template.Plotly.helpers({
+    'isDisabled' : ()=>{
+        return Disabled;
+    }});
